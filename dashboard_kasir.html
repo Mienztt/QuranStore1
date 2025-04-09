@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Kasir - QuranStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <header
+      id="mainHeader"
+      class="bg-white shadow-md fixed top-0 w-full z-50 flex justify-between items-center p-4"
+    >
+      <h1 class="text-green-700 text-2xl font-bold">Dashboard Kasir</h1>
+      <nav>
+        <ul class="flex space-x-6 text-gray-700">
+          <li><a href="produk.html" class="hover:text-green-700">Produk</a></li>
+          <li><a href="login.html" class="hover:text-green-700">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="flex">
+      <aside class="bg-green-700 text-white w-1/4 min-h-screen p-6 mt-16">
+        <h2 class="text-lg font-semibold mb-4">Menu Kasir</h2>
+        <ul class="space-y-4">
+          <li>
+            <a href="#" class="block p-2 rounded hover:bg-green-600"
+              >Transaksi Penjualan</a
+            >
+          </li>
+          <li>
+            <a href="#" class="block p-2 rounded hover:bg-green-600"
+              >Laporan Keuangan</a
+            >
+          </li>
+          <li>
+            <a href="login.html" class="block p-2 rounded hover:bg-green-600"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="w-3/4 p-6 mt-16">
+        <!-- Transaksi Penjualan -->
+        <section class="bg-white p-6 rounded shadow-md mb-6">
+          <h3 class="text-2xl font-bold mb-4">Transaksi Penjualan</h3>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-gray-700">Nama Produk</label>
+              <input
+                type="text"
+                class="w-full p-2 border rounded"
+                placeholder="Masukkan nama produk"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700">Jumlah</label>
+              <input
+                type="number"
+                class="w-full p-2 border rounded"
+                placeholder="Masukkan jumlah"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700">Harga</label>
+              <input
+                type="number"
+                class="w-full p-2 border rounded"
+                placeholder="Masukkan harga"
+              />
+            </div>
+            <button
+              type="submit"
+              class="bg-green-700 text-white px-4 py-2 rounded"
+            >
+              Simpan Transaksi
+            </button>
+          </form>
+        </section>
+
+        <!-- Laporan Keuangan -->
+        <section class="bg-white p-6 rounded shadow-md">
+          <h3 class="text-2xl font-bold mb-4">Laporan Keuangan</h3>
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border p-2">Tanggal</th>
+                <th class="border p-2">Produk</th>
+                <th class="border p-2">Jumlah</th>
+                <th class="border p-2">Total Harga</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border p-2">29/03/2025</td>
+                <td class="border p-2">Al-Quran Hafalan</td>
+                <td class="border p-2">2</td>
+                <td class="border p-2">Rp 240.000</td>
+              </tr>
+              <tr>
+                <td class="border p-2">29/03/2025</td>
+                <td class="border p-2">Tafsir Ibnu Katsir</td>
+                <td class="border p-2">1</td>
+                <td class="border p-2">Rp 180.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white text-center p-4">
+      &copy; 2025 QuranStore - Semua Hak Dilindungi
+    </footer>
+  </body>
+</html>

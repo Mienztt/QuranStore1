@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Toko Quran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-green-50 font-sans">
+    <section class="min-h-screen flex items-center justify-center">
+      <div class="bg-white p-8 rounded-2xl shadow-lg max-w-xl w-full">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">Daftar Akun</h2>
+        <p class="text-sm text-green-700 mb-6">
+          Buat akun pelanggan untuk belanja di Toko Quran.
+        </p>
+
+        <form id="registerForm" class="flex flex-col gap-4">
+          <div>
+            <input
+              id="nama"
+              type="text"
+              placeholder="Nama Lengkap"
+              class="p-2 border rounded-xl w-full"
+              required
+            />
+            <small id="error-nama" class="text-red-600 text-sm"></small>
+          </div>
+
+          <div>
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              class="p-2 border rounded-xl w-full"
+              required
+            />
+            <small id="error-username" class="text-red-600 text-sm"></small>
+          </div>
+
+          <div>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              class="p-2 border rounded-xl w-full"
+              required
+            />
+            <small id="error-email" class="text-red-600 text-sm"></small>
+          </div>
+
+          <div>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              class="p-2 border rounded-xl w-full"
+              required
+            />
+            <small id="error-password" class="text-red-600 text-sm"></small>
+          </div>
+
+          <div>
+            <input
+              id="whatsapp"
+              type="text"
+              placeholder="Contoh: 6281234567890"
+              class="p-2 border rounded-xl w-full"
+              required
+            />
+            <small id="error-whatsapp" class="text-red-600 text-sm"></small>
+          </div>
+          <select id="role" class="p-2 border rounded-xl w-full" required>
+            <option value="">-- Daftar Sebagai --</option>
+            <option value="pelanggan">Pelanggan</option>
+            <option value="kasir">Kasir</option>
+            <option value="admin">Admin System</option>
+          </select>
+          <small id="error-role" class="text-red-600 text-sm"></small>
+
+          <button
+            type="submit"
+            class="bg-green-700 text-white py-2 rounded-xl hover:bg-green-800 duration-300 font-semibold"
+          >
+            Daftar
+          </button>
+        </form>
+        <div id="loadingSpinner" class="hidden text-center text-blue-500">
+          <p>Memproses...</p>
+        </div>
+
+        <p class="mt-6 text-sm text-gray-600">
+          Sudah punya akun?
+          <a
+            href="login.html"
+            class="text-green-800 font-semibold hover:underline"
+            >Login di sini</a
+          >
+        </p>
+      </div>
+    </section>
+    <script type="module" src="register.js"></script>
+  </body>
+</html>
