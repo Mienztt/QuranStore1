@@ -440,3 +440,12 @@ function cekStatusLogin(callback) {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("mobileMenuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+});
