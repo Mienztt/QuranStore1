@@ -483,9 +483,16 @@ function cekStatusLogin(callback) {
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
+  const mobileBtn = document.getElementById("mobileMenuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  toggleBtn.addEventListener("click", () => {
+  mobileBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
+    mobileMenu.classList.toggle("animate-slide-down");
+  });
+});
+document.querySelectorAll("#mobileMenu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.add("hidden");
   });
 });
