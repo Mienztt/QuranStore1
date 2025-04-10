@@ -6,110 +6,154 @@
     <title>Register - Toko Quran</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
- <body class="bg-gradient-to-br from-green-100 via-green-50 to-white font-sans min-h-screen flex items-center justify-center">
-  <section class="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-8 animate-fade-in">
-    <div class="mb-6 text-center">
-      <h2 class="text-3xl font-bold text-green-800">Daftar Akun</h2>
-      <p class="text-sm text-green-700">Buat akun pelanggan untuk belanja di QuranStore</p>
-    </div>
-
-    <form id="registerForm" class="space-y-4">
-      <!-- Nama -->
-      <div>
-        <label for="nama" class="block text-sm font-medium text-green-900">Nama Lengkap</label>
-        <input id="nama" type="text" placeholder="Nama Lengkap"
-          class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-          required />
-        <small id="error-nama" class="text-sm text-red-600"></small>
+  <body
+    class="bg-gradient-to-br from-green-100 via-green-50 to-white font-sans min-h-screen flex items-center justify-center"
+  >
+    <section
+      class="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-8 animate-fade-in"
+    >
+      <div class="mb-6 text-center">
+        <h2 class="text-3xl font-bold text-green-800">Daftar Akun</h2>
+        <p class="text-sm text-green-700">
+          Buat akun pelanggan untuk belanja di QuranStore
+        </p>
       </div>
 
-      <!-- Username -->
-      <div>
-        <label for="username" class="block text-sm font-medium text-green-900">Username</label>
-        <input id="username" type="text" placeholder="Username"
-          class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-          required />
-        <small id="error-username" class="text-sm text-red-600"></small>
+      <form id="registerForm" class="space-y-4">
+        <!-- Nama -->
+        <div>
+          <label for="nama" class="block text-sm font-medium text-green-900"
+            >Nama Lengkap</label
+          >
+          <input
+            id="nama"
+            type="text"
+            placeholder="Nama Lengkap"
+            class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          />
+          <small id="error-nama" class="text-sm text-red-600"></small>
+        </div>
+
+        <!-- Username -->
+        <div>
+          <label for="username" class="block text-sm font-medium text-green-900"
+            >Username</label
+          >
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          />
+          <small id="error-username" class="text-sm text-red-600"></small>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-green-900"
+            >Email</label
+          >
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          />
+          <small id="error-email" class="text-sm text-red-600"></small>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-green-900"
+            >Password</label
+          >
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          />
+          <small id="error-password" class="text-sm text-red-600"></small>
+        </div>
+
+        <!-- WhatsApp -->
+        <div>
+          <label for="whatsapp" class="block text-sm font-medium text-green-900"
+            >Nomor WhatsApp</label
+          >
+          <input
+            id="whatsapp"
+            type="text"
+            placeholder="Contoh: 6281234567890"
+            class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          />
+          <small id="error-whatsapp" class="text-sm text-red-600"></small>
+        </div>
+
+        <!-- Role -->
+        <div>
+          <label for="role" class="block text-sm font-medium text-green-900"
+            >Daftar Sebagai</label
+          >
+          <select
+            id="role"
+            class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >
+            <option value="">-- Pilih Peran --</option>
+            <option value="pelanggan">Pelanggan</option>
+            <option value="kasir">Kasir</option>
+            <option value="admin">Admin System</option>
+          </select>
+          <small id="error-role" class="text-sm text-red-600"></small>
+        </div>
+
+        <!-- Button -->
+        <button
+          type="submit"
+          class="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 rounded-xl transition duration-300"
+        >
+          Daftar
+        </button>
+      </form>
+
+      <div id="loadingSpinner" class="text-center text-blue-500 hidden mt-4">
+        <p>Memproses...</p>
       </div>
 
-      <!-- Email -->
-      <div>
-        <label for="email" class="block text-sm font-medium text-green-900">Email</label>
-        <input id="email" type="email" placeholder="Email"
-          class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-          required />
-        <small id="error-email" class="text-sm text-red-600"></small>
-      </div>
+      <p class="mt-6 text-sm text-center text-gray-700">
+        Sudah punya akun?
+        <a href="login.html" class="text-green-700 font-medium hover:underline"
+          >Login di sini</a
+        >
+      </p>
+    </section>
 
-      <!-- Password -->
-      <div>
-        <label for="password" class="block text-sm font-medium text-green-900">Password</label>
-        <input id="password" type="password" placeholder="Password"
-          class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-          required />
-        <small id="error-password" class="text-sm text-red-600"></small>
-      </div>
+    <!-- Tambahan animasi -->
+    <style>
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
 
-      <!-- WhatsApp -->
-      <div>
-        <label for="whatsapp" class="block text-sm font-medium text-green-900">Nomor WhatsApp</label>
-        <input id="whatsapp" type="text" placeholder="Contoh: 6281234567890"
-          class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-          required />
-        <small id="error-whatsapp" class="text-sm text-red-600"></small>
-      </div>
-
-      <!-- Role -->
-      <div>
-        <label for="role" class="block text-sm font-medium text-green-900">Daftar Sebagai</label>
-        <select id="role"
-          class="mt-1 w-full px-4 py-2 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-          required>
-          <option value="">-- Pilih Peran --</option>
-          <option value="pelanggan">Pelanggan</option>
-          <option value="kasir">Kasir</option>
-          <option value="admin">Admin System</option>
-        </select>
-        <small id="error-role" class="text-sm text-red-600"></small>
-      </div>
-
-      <!-- Button -->
-      <button type="submit"
-        class="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 rounded-xl transition duration-300">
-        Daftar
-      </button>
-    </form>
-
-    <div id="loadingSpinner" class="text-center text-blue-500 hidden mt-4">
-      <p>Memproses...</p>
-    </div>
-
-    <p class="mt-6 text-sm text-center text-gray-700">
-      Sudah punya akun?
-      <a href="login.html" class="text-green-700 font-medium hover:underline">Login di sini</a>
-    </p>
-  </section>
-
-  <!-- Tambahan animasi -->
-  <style>
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .animate-fade-in {
+        animation: fade-in 0.6s ease-out;
       }
-    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    .animate-fade-in {
-      animation: fade-in 0.6s ease-out;
-    }
-  </style>
-
-  <script type="module" src="register.js"></script>
-</body>
-
+    <script type="module" src="register.js"></script>
+  </body>
 </html>
