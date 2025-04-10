@@ -76,8 +76,17 @@ function tampilkanStruk() {
 // Tombol checkout
 document.getElementById("btnCheckout").addEventListener("click", async () => {
   if (!userLogin) {
-    alert("Kamu belum login.");
-    window.location.href = "login.html";
+    Swal.fire({
+      icon: "warning",
+      title: "Belum Login!",
+      text: "Silakan login terlebih dahulu sebelum checkout.",
+      confirmButtonText: "Login Sekarang",
+      confirmButtonColor: "#166534",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "login.html";
+      }
+    });
     return;
   }
 
@@ -90,10 +99,30 @@ document.getElementById("btnCheckout").addEventListener("click", async () => {
       total: totalHarga,
     });
 
-    alert("Checkout berhasil disimpan!");
-    // window.location.href = "sukses.html";
+    // Simpan ringkasan ke localStorage
+    const ringkasan = keranjang.map((item) => ({
+      nama: item.nama,
+      harga: item.harga,
+      qty: item.qty,
+    }));
+    localStorage.setItem("checkoutData", JSON.stringify(ringkasan));
+
+    // Tampilkan notifikasi dan redirect
+    Swal.fire({
+      icon: "success",
+      title: "Checkout Berhasil!",
+      text: "Transaksi kamu sudah tersimpan.",
+      confirmButtonText: "Lihat Struk",
+      confirmButtonColor: "#16a34a",
+    }).then(() => {
+      window.location.href = "sukses.html";
+    });
   } catch (err) {
     console.error("Gagal simpan transaksi:", err);
-    alert("Gagal menyimpan transaksi.");
+    Swal.fire({
+      icon: "error",
+      title: "Gagal!",
+      text: "Terjadi kesalahan saat menyimpan transaksi.",
+    });
   }
 });
