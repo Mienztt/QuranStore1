@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await loginWithUsernameOrEmail(identifier, password);
         const user = result.user;
 
-        // Ambil data user dari Firestore
         const userDoc = await getDoc(doc(db, "users", user.uid));
         const userData = userDoc.data();
 
@@ -92,7 +91,16 @@ document.addEventListener("DOMContentLoaded", () => {
           })
         );
 
-        // Routing berdasarkan role
+        // === SweetAlert: Login sukses ===
+        await Swal.fire({
+          icon: "success",
+          title: "Login Berhasil!",
+          text: `Halo, ${userData.username || "pengguna"} 👋`,
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+        // Redirect berdasarkan role
         switch (userData.role) {
           case "admin":
             window.location.href = "dashboard_sistem.html";
@@ -105,7 +113,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (err) {
         console.error("Login error:", err.message);
-        loginError.textContent = "Login gagal: " + err.message;
+
+        Swal.fire({
+          icon: "error",
+          title: "Login Gagal!",
+          text: err.message,
+          confirmButtonColor: "#dc2626",
+        });
       }
     });
   }
@@ -136,12 +150,23 @@ document.addEventListener("DOMContentLoaded", () => {
             })
           );
 
-          alert("Login berhasil dengan Google");
+          await Swal.fire({
+            icon: "success",
+            title: "Login Google Berhasil!",
+            text: `Selamat datang, ${user.displayName}`,
+            timer: 1500,
+            showConfirmButton: false,
+          });
+
           window.location.href = "produk.html";
         })
         .catch((error) => {
           console.error("Login error:", error);
-          alert("Login gagal: " + error.message);
+          Swal.fire({
+            icon: "error",
+            title: "Login Gagal",
+            text: error.message,
+          });
         });
     });
   }
