@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Sukses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body
+    class="bg-green-50 flex items-center justify-center min-h-screen font-sans"
+  >
+    <div class="bg-white p-8 rounded-2xl shadow-lg text-center max-w-md w-full">
+      <h1 class="text-3xl font-bold text-green-700 mb-4">
+        ✅ Checkout Berhasil!
+      </h1>
+      <p class="text-gray-700 mb-2">
+        Terima kasih telah berbelanja di <strong>QuranStore</strong>.
+      </p>
+
+      <div
+        id="ringkasan"
+        class="text-left mt-4 mb-4 text-sm space-y-3 border-t pt-4"
+      >
+        <!-- Ringkasan akan di-render di sini -->
+      </div>
+
+      <div class="font-semibold text-green-800 mb-4">
+        Total: <span id="totalHarga" class="text-green-900 text-lg"></span>
+      </div>
+
+      <a
+        href="produk.html"
+        class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition block w-full mb-3"
+      >
+        Kembali ke Produk
+      </a>
+      <button
+        id="logoutBtn"
+        class="w-full border border-green-600 text-green-700 px-6 py-2 rounded-lg hover:bg-green-100 transition"
+      >
+        Logout
+      </button>
+    </div>
+
+    <script type="module">
+      import {
+        getAuth,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCsYPtUMbC2vFPGNNSyEST_27QuHn1aS0o",
+        authDomain: "login-fff1e.firebaseapp.com",
+        projectId: "login-fff1e",
+        storageBucket: "login-fff1e.appspot.com",
+        messagingSenderId: "961683942394",
+        appId: "1:961683942394:web:142dbcae9708918ed2d243",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Handle logout
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut(auth).then(() => {
+          localStorage.removeItem("loginUser");
+          Swal.fire({
+            icon: "success",
+            title: "Logout Berhasil",
+            showConfirmButton: false,
+            timer: 1200,
+          }).then(() => {
+            window.location.href = "index.html";
+          });
+        });
+      });
+
+      // === TAMPILKAN RINGKASAN DARI localStorage ===
+      const ringkasanDiv = document.getElementById("ringkasan");
+      const totalSpan = document.getElementById("totalHarga");
+
+      const transaksi = JSON.parse(localStorage.getItem("checkoutData")) || [];
+
+      let total = 0;
+      transaksi.forEach((item) => {
+        const subTotal = item.harga * item.qty;
+        total += subTotal;
+
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <div>
+            <p class="font-semibold text-green-800">${item.nama}</p>
+            <p class="text-gray-600">Jumlah: ${
+              item.qty
+            } x Rp ${item.harga.toLocaleString()}</p>
+            <p class="text-gray-400">Subtotal: Rp ${subTotal.toLocaleString()}</p>
+          </div>
+        `;
+        ringkasanDiv.appendChild(div);
+      });
+
+      totalSpan.textContent = "Rp " + total.toLocaleString();
+
+      // Bersihkan localStorage (opsional)
+      localStorage.removeItem("checkoutData");
+    </script>
+  </body>
+</html>
