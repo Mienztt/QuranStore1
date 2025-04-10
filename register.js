@@ -151,15 +151,34 @@ form.addEventListener("submit", async function (e) {
 
     await setDoc(doc(db, "users", user.uid), userData);
     localStorage.setItem("loginUser", JSON.stringify(userData));
-    alert("Pendaftaran berhasil!");
-    window.location.href = "login.html";
+
+    // 🎉 SweetAlert - tampilan keren
+    Swal.fire({
+      icon: "success",
+      title: "Pendaftaran Berhasil 🎉",
+      text: "Akun kamu sudah siap digunakan.",
+      confirmButtonText: "Lanjut Login",
+      confirmButtonColor: "#16a34a",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+    }).then(() => {
+      window.location.href = "login.html";
+    });
   } catch (error) {
-    alert("Gagal mendaftar: " + error.message);
     console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Gagal Mendaftar 😥",
+      text: error.message,
+      confirmButtonText: "Coba Lagi",
+      confirmButtonColor: "#dc2626",
+    });
   } finally {
     spinner.classList.add("hidden");
   }
 });
+
+// Function to check login status
 
 // Function to check login status
 function cekStatusLogin(callback) {
