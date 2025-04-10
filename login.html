@@ -94,8 +94,105 @@
         </div>
 
         <!-- Right: Gambar -->
+        <!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - QuranStore</title>
+    <!-- <link href="./style.css" rel="stylesheet" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Form Login -->
+    <section
+      class="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen flex justify-center items-center p-6"
+    >
+      <div
+        class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-5xl"
+      >
+        <!-- Left: Form -->
+        <div class="md:w-1/2 p-8 md:p-12 space-y-6">
+          <h2 class="text-4xl font-bold text-green-800">Login QuranStore</h2>
+          <p class="text-green-700 text-sm">
+            Silakan masuk untuk melanjutkan belanja produk Islami.
+          </p>
+
+          <form id="loginForm" class="space-y-4">
+            <input
+              type="text"
+              id="usernameOrEmail"
+              name="email"
+              placeholder="Username atau Email"
+              class="w-full px-4 py-3 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm"
+            />
+
+            <div class="relative">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                class="w-full px-4 py-3 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm"
+              />
+              <span
+                id="togglePassword"
+                class="absolute top-3 right-4 cursor-pointer text-gray-500 hover:text-green-700"
+                >👁️</span
+              >
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded-lg font-semibold transition-transform transform hover:scale-105"
+            >
+              Login
+            </button>
+
+            <small id="loginError" class="text-red-600 text-sm block"></small>
+          </form>
+
+          <!-- Divider -->
+          <div class="flex items-center gap-4 my-4">
+            <hr class="flex-grow border-gray-300" />
+            <span class="text-sm text-gray-400">atau</span>
+            <hr class="flex-grow border-gray-300" />
+          </div>
+
+          <!-- Google Login -->
+          <button
+            id="googleLoginButton"
+            class="w-full border border-green-300 hover:bg-green-50 py-3 rounded-lg flex items-center justify-center text-sm font-medium text-green-700 transition-transform transform hover:scale-105"
+          >
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              class="w-5 h-5 mr-2"
+              alt="Google logo"
+            />
+            Login dengan Google
+          </button>
+
+          <div class="text-sm text-green-700 mt-4">
+            <a href="#" class="hover:underline">Lupa password?</a>
+          </div>
+
+          <div
+            class="text-sm flex justify-between items-center pt-4 border-t mt-4 text-green-700"
+          >
+            <span>Belum punya akun?</span>
+            <a
+              href="register.html"
+              class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg font-semibold transition hover:scale-110"
+            >
+              Daftar Sekarang
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Gambar -->
+        <!-- Right: Gambar (Tampilkan hanya di layar medium ke atas) -->
         <div
-          class="md:w-1/2 bg-gradient-to-br from-green-200 via-green-100 to-white flex justify-center items-center p-4"
+          class="hidden md:flex md:w-1/2 bg-gradient-to-br from-green-200 via-green-100 to-white justify-center items-center p-4"
         >
           <img
             src="img/quran6.png"
@@ -103,6 +200,14 @@
             class="w-full max-w-sm rounded-2xl shadow-md"
           />
         </div>
+      </div>
+    </section>
+
+    <script type="module" src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
+
       </div>
     </section>
 
