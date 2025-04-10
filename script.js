@@ -360,8 +360,18 @@ window.addEventListener("DOMContentLoaded", () => {
   if (lihatStrukBtn) {
     lihatStrukBtn.addEventListener("click", () => {
       if (!currentUser) {
-        alert("Silakan login terlebih dahulu.");
-        window.location.href = "login.html";
+        Swal.fire({
+          icon: "warning",
+          title: "Oops!",
+          text: "Silakan login terlebih dahulu untuk melanjutkan.",
+          confirmButtonText: "Login Sekarang",
+          confirmButtonColor: "#166534",
+          allowOutsideClick: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "login.html";
+          }
+        });
         return;
       }
 
@@ -380,12 +390,44 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 window.logout = () => {
-  signOut(auth).then(() => {
-    localStorage.removeItem("loginUser");
-    alert("Berhasil logout");
-    window.location.href = "index.html";
-  });
+  signOut(auth)
+    .then(() => {
+      localStorage.removeItem("loginUser");
+
+      // Buat elemen toast
+      const toast = document.createElement("div");
+      toast.textContent = "🚪 Logout berhasil. Sampai jumpa lagi!";
+      toast.className =
+        "fixed top-6 right-6 bg-green-600 text-white px-5 py-3 rounded-lg shadow-lg z-50 text-sm animate-toast";
+
+      // Tambahkan ke body
+      document.body.appendChild(toast);
+
+      // CSS animasi toast
+      const style = document.createElement("style");
+      style.textContent = `
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateX(50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-toast {
+          animation: slideIn 0.4s ease-out;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Auto redirect dan hapus toast setelah 2 detik
+      setTimeout(() => {
+        toast.remove();
+        window.location.href = "index.html";
+      }, 2000);
+    })
+    .catch((error) => {
+      console.error("Logout error:", error);
+      alert("Gagal logout: " + error.message);
+    });
 };
+
 const backToTopBtn = document.getElementById("backToTopBtn");
 
 window.addEventListener("scroll", () => {
@@ -440,9 +482,7 @@ function cekStatusLogin(callback) {
     }
   });
 }
-
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("mobileMenuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
   toggleBtn.addEventListener("click", () => {
